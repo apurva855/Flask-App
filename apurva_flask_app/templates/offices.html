@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="text-center">Offices List</h2>
+<table class="table table-hover">
+    <thead>
+      <tr class="table-success">
+        <th scope="col">OfficeCode</th>
+        <th scope="col">City</th>
+        <th scope="col">Phone</th>
+        <th scope="col">AddressLine1</th>
+        <th scope="col">AddressLine2</th>
+        <th scope="col">State</th>
+        <th scope="col">Country</th>
+        <th scope="col">PostalCode</th>
+        <th scope="col">Territory</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for office in offices %}
+        <tr class="font-weight-bold">
+        <th scope="row"><a href="{{url_for('employee',officeid=office.officeCode)}} ">{{office.officeCode}}</a> </th>
+        <td>{{office.city}} </td>
+        <td>{{office.phone}} </td>
+        <td>{{office.addressLine1}} </td>
+        <td>{{office.addressLine2}} </td>
+        <td>{{office.state}} </td>
+        <td>{{office.country}} </td>
+        <td>{{office.postalCode}} </td>
+        <td>{{office.territory}} </td>
+       </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+  <button class="btn btn-outline-info btn-lg "><a href="{{url_for('home')}} " class="link-secondary">Back</a></button>
+  
+  
+{% endblock content %}

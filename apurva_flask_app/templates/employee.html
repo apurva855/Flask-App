@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="text-center p-3">Employees List</h2>
+
+<table class="table table-hover p-3">
+    <thead>
+      <tr class="table-success">
+        <th>EmployeeNumber</th>
+        <th>LastName</th>
+        <th>FirstName</th>
+        <th>Extension</th>
+        <th>Email</th>
+        <th>OfficeCode</th>
+        <th>JobTitle</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for employee in employees %}
+        <tr >
+          <th scope="row">{{employee.employeeNumber}} </th>
+          <td class="text-capitalize font-weight-bold">{{employee.lastName}} </td>
+          <td class="text-capitalize font-weight-bold">{{employee.firstName}} </td>
+          <td class="font-weight-bold">{{employee.extension}} </td>
+          <td class="font-weight-bold">{{employee.email}} </td>
+          <td class="font-weight-bold">{{employee.officeCode}} </td>
+          <td class="text-capitalize font-weight-bold">{{employee.jobTitle}} </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button class="btn btn-outline-info btn-lg"><a href="{{url_for('office')}} " class="">Back</a></button>
+  {% if current_user.role == 'admin' %}
+  <button class="btn btn-outline-info btn-lg"><a href="{{url_for('addemployee',officeid=officeid)}} " class="link-primary">AddEmployee</a></button>
+  {% endif %}
+{% endblock content%}
